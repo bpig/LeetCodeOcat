@@ -13,7 +13,7 @@ public class N001_TwoSum_BTest {
     public void test() {
         int[] nums = new int[] {1,2,3};
         int[] values = nb.twoSum(nums, 4);
-        int[] expect = new int[] {1,3};
+        int[] expect = new int[]{1, 3};
         assertArrayEquals(expect, values);
     }
 }
