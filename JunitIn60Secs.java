@@ -1,8 +1,8 @@
 class JunitIn60Secs {
     /**
      * @Test Mark your test cases with@Test annotations.
-     * You don��t need to prefix your test cases with ��test��.In addition,your
-     * class does not need to extend from��TestCase��class.
+     * You don't need to prefix your test cases with "test".
+     * In addition, your class does not need to extend from TestCase class.
      */
     @Test
     public void addition() {
