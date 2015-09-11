@@ -11,6 +11,7 @@
  */
 public class N004_MedianOfTwoSortedArrays_B {
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
-
+        //todo
+        return 0;
     }
 }

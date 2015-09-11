@@ -21,14 +21,46 @@ import java.util.ArrayList;
  */
 public class N006_ZigZagConversion_B {
     public String convert(String s, int numRows) {
-        ArrayList<ArrayList<Integer>> matrix = new ArrayList<>(numRows);
+        if (numRows <= 1 || numRows >= s.length() || s == null) {
+            return s;
+        }
+
+        int zigSpan = (numRows - 1) * 2;
+        StringBuilder res = new StringBuilder();
+
+        for (int i = 0; i < numRows; i++) {
+            for (int j = i; j < s.length(); j += zigSpan) {
+                //add every element for each column and the span is zigSpan
+                res.append(s.charAt(j));
+                //if not the first and last column, just add additional element if not beyond the length of s
+                //and the span is zigSpan+j-2*i
+                if (i != 0 && i != numRows - 1 && zigSpan + j - 2 * i < s.length()) {
+                    res.append(s.charAt(zigSpan + j - 2 * i));
+                }
+            }
+        }
+        return res.toString();
+    }
+
+    public String score0(String s, int numRows) {
+        ArrayList<ArrayList<Character>> matrix = new ArrayList<>(numRows);
         for (int i = 0; i < numRows; ++i) {
             matrix.add(new ArrayList<>());
         }
-        for (int i = 0; i < s.length(); ++i) {
-            char c = s.charAt(i);
-
+        ArrayList<Integer> rowIndex = new ArrayList<>();
+        for (int i = 0; i < numRows; ++i) {
+            rowIndex.add(i);
         }
-        return "";
+        for (int i = numRows - 2; i > 0; --i) {
+            rowIndex.add(i);
+        }
+        int count = rowIndex.size();
+        for (int i = 0; i < s.length(); ++i) {
+            matrix.get(rowIndex.get(i % count)).add(s.charAt(i));
+        }
+        StringBuilder builder = new StringBuilder();
+        matrix.forEach(row -> row.forEach(builder::append));
+
+        return builder.toString();
     }
 }

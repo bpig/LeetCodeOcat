@@ -8,6 +8,6 @@ public class N004_MedianOfTwoSortedArrays_BTest {
     N004_MedianOfTwoSortedArrays_B nb = new N004_MedianOfTwoSortedArrays_B();
     @Test
     public void test() {
-        
+
     }
 }

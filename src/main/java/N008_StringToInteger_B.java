@@ -8,24 +8,26 @@ public class N008_StringToInteger_B {
         if (str.length() == 0) {
             return 0;
         }
-        long value = 0;
         int idx = 0;
         boolean neg = false;
         if (str.charAt(0) == '-') {
             neg = true;
             idx = 1;
+        } else if (str.charAt(0) == '+') {
+            idx = 1;
         }
+        int value = 0;
         for (; idx < str.length(); ++idx) {
             char c = str.charAt(idx);
             if (!Character.isDigit(c)) {
-                return 0;
+                break;
             }
-            value = value * 10 + (c - '0');
+            int d = c - '0';
+            if (value > (Integer.MAX_VALUE - d) / 10) {
+                return neg ? Integer.MIN_VALUE : Integer.MAX_VALUE;
+            }
+            value = value * 10 + d;
         }
-        value = neg ? -value : value;
-        if (value > Integer.MAX_VALUE || value < Integer.MIN_VALUE) {
-            return 0;
-        }
-        return (int)value;
+        return neg ? -value : value;
     }
 }

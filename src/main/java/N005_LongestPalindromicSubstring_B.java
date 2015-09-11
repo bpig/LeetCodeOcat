@@ -10,6 +10,7 @@
  */
 public class N005_LongestPalindromicSubstring_B {
     public String longestPalindrome(String s) {
-        
+        //todo
+        return "";
     }
 }
