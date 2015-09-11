@@ -1,8 +1,8 @@
 class JunitIn60Secs {
     /**
      * @Test Mark your test cases with@Test annotations.
-     * You don¡¯t need to prefix your test cases with ¡°test¡±.In addition,your
-     * class does not need to extend from¡°TestCase¡±class.
+     * You donï¿½ï¿½t need to prefix your test cases with ï¿½ï¿½testï¿½ï¿½.In addition,your
+     * class does not need to extend fromï¿½ï¿½TestCaseï¿½ï¿½class.
      */
     @Test
     public void addition() {
@@ -16,7 +16,7 @@ class JunitIn60Secs {
 
     /**
      * @Before and @After
-     * Use @Before and @After annotations for ¡°setup¡±and¡°tearDown¡±
+     * Use @Before and @After annotations for ï¿½ï¿½setupï¿½ï¿½andï¿½ï¿½tearDownï¿½ï¿½
      * methods respectively
      * They run before and after every test case.
      */
