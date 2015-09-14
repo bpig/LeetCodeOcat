@@ -1,0 +1,16 @@
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+
+/**
+ * Created: shuai.li(286287737@qq.com)
+ * Date: 2015-09-14
+ */
+public class N005_LongestPalindromicSubstring_BTest {
+    N005_LongestPalindromicSubstring_B nb = new N005_LongestPalindromicSubstring_B();
+    @Test
+    public void testLongestPalindrome() throws Exception {
+        assertEquals("bb", nb.longestPalindrome("bb"));
+        assertEquals("ranynar", nb.longestPalindrome("civilwartestingwhetherthatnaptionoranynartionsoconceivedandsodedicatedcanlongendureWeareqmetonagreatbattlefiemldoftzhatwarWehavecometodedicpateaportionofthatfieldasafinalrestingplaceforthosewhoheregavetheirlivesthatthatnationmightliveItisaltogetherfangandproperthatweshoulddothisButinalargersensewecannotdedicatewecannotconsecratewecannothallowthisgroundThebravelmenlivinganddeadwhostruggledherehaveconsecrateditfaraboveourpoorponwertoaddordetractTgheworldadswfilllittlenotlenorlongrememberwhatwesayherebutitcanneverforgetwhattheydidhereItisforusthelivingrathertobededicatedheretotheulnfinishedworkwhichtheywhofoughtherehavethusfarsonoblyadvancedItisratherforustobeherededicatedtothegreattdafskremainingbeforeusthatfromthesehonoreddeadwetakeincreaseddevotiontothatcauseforwhichtheygavethelastpfullmeasureofdevotionthatweherehighlyresolvethatthesedeadshallnothavediedinvainthatthisnationunsderGodshallhaveanewbirthoffreedomandthatgovernmentofthepeoplebythepeopleforthepeopleshallnotperishfromtheearth"));
+    }
+}

@@ -3,6 +3,8 @@
  * Date: 2015-09-12
  */
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -20,7 +22,36 @@ import java.util.List;
  */
 public class N015_3Sum_B {
     public List<List<Integer>> threeSum(int[] nums) {
-        //todo
-        return null;
+        Arrays.sort(nums);
+        List<List<Integer>> result = new ArrayList<>();
+        for (int i = 0; i < nums.length - 2; ++i) {
+            int low = i + 1;
+            int high = nums.length - 1;
+            while (low < high) {
+                int sum = nums[low] + nums[high] + nums[i];
+                if (sum < 0) {
+                    ++low;
+                } else if (sum > 0) {
+                    --high;
+                } else {
+                    result.add(new ArrayList<>(Arrays.asList(nums[i], nums[low], nums[high])));
+                    while (low < high) {
+                        if (nums[low] == nums[low + 1]) {
+                            low++;
+                        } else if (nums[high] == nums[high - 1]) {
+                            high--;
+                        } else {
+                            break;
+                        }
+                    }
+                    ++low;
+                    --high;
+                }
+            }
+            while (i + 1 < nums.length - 2 && nums[i] == nums[i + 1]) {
+                ++i;
+            }
+        }
+        return result;
     }
 }

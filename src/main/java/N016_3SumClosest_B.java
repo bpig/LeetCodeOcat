@@ -18,7 +18,25 @@ import java.util.Arrays;
 public class N016_3SumClosest_B {
     public int threeSumClosest(int[] nums, int target) {
         Arrays.sort(nums);
-        //todo
-        return 0;
+        int closest = Integer.MAX_VALUE;
+        int result = 0;
+        for (int i = 0; i < nums.length - 2; ++i) {
+            int low = i + 1;
+            int high = nums.length - 1;
+            while (low < high) {
+                int sum = nums[i] + nums[low] + nums[high];
+                int close = Math.abs(sum - target);
+                if (close < closest) {
+                    result = sum;
+                    closest = close;
+                }
+                if (sum > target) {
+                    --high;
+                } else {
+                    ++low;
+                }
+            }
+        }
+        return result;
     }
 }
