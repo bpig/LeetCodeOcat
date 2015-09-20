@@ -13,6 +13,7 @@ package N02;
  */
 public class N029_DivideTwoIntegers_B {
     public int divide(int dividend, int divisor) {
+        //todo
         if (divisor > dividend) {
             return 0;
         }
