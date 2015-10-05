@@ -4,9 +4,6 @@ package N24;
  * Created by wenwen.xww on 2015/10/5.
  */
 
-        import java.util.HashMap;
-        import java.util.Map;
-
 /**
  * Given two strings s and t, write a function to determine if t is an anagram of s.
  * <p/>
