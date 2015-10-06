@@ -37,22 +37,16 @@ public class N289_GameOfLife_O {
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 live = 0;
-                if (isNeighborLive(board, i-1, j))
-                    live++;
-                if (isNeighborLive(board,i-1, j-1))
-                    live++;
-                if (isNeighborLive(board,i-1, j+1))
-                    live++;
-                if (isNeighborLive(board, i, j-1))
-                    live++;
-                if (isNeighborLive(board, i, j+1))
-                    live++;
-                if (isNeighborLive(board, i+1, j))
-                    live++;
-                if (isNeighborLive(board, i+1, j-1))
-                    live++;
-                if (isNeighborLive(board, i+1, j+1))
-                    live++;
+                for (int s = -1 ; s < 2; s++) {
+                    for (int t = -1; t < 2; t++) {
+                        if (s == 0 && t == 0) {
+                            continue;
+                        }
+                        if (isNeighborLive(board,i+s,j+t)) {
+                            live++;
+                        }
+                    }
+                }
 
                 if (board[i][j] == 1 && live < 2) {
                     board[i][j] = 3;
