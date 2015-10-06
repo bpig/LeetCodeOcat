@@ -33,7 +33,7 @@ public class N289_GameOfLife_B {
     public void gameOfLife(int[][] board) {
         for (int i = 0; i < board.length; ++i) {
             for (int j = 0; j < board[0].length; ++j) {
-                int[] status = new int[2];
+                int lives = 0;
                 for (int l = -1; l <= 1; ++l) {
                     for (int m = -1; m <= 1; ++m) {
                         int row = i + l;
@@ -43,17 +43,15 @@ public class N289_GameOfLife_B {
                         }
                         if (l == 0 && m == 0) { continue; }
                         int value = board[row][col] & 1;
-                        status[value]++;
+                        if (value == 1) { lives++; }
                     }
                 }
                 int self = board[i][j] & 1;
-                switch (self) {
-                    case 1:
-                        if (status[1] == 2 || status[1] == 3) { self |= 2; }
-                        break;
-                    case 0:
-                        if (status[1] == 3) { self |= 2; }
-                        break;
+                if (self == 1 && (lives == 2 || lives == 3)) {
+                    self = 3;
+                }
+                if (self == 0 && lives == 3) {
+                    self = 2;
                 }
                 board[i][j] = self;
             }
