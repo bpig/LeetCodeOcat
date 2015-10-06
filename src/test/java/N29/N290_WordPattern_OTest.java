@@ -16,5 +16,6 @@ public class N290_WordPattern_OTest {
         assertFalse(wp.wordPattern("abba", "dog cat cat fish"));
         assertFalse(wp.wordPattern("aaaa", "dog cat cat dog"));
         assertFalse(wp.wordPattern("abba", "dog dog dog dog"));
+        assertFalse(wp.wordPattern("abba", "e"));
     }
 }
