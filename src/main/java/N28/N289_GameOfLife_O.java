@@ -61,10 +61,10 @@ public class N289_GameOfLife_O {
                     board[i][j] = 1;
                 }
                 if (board[i][j] == 1 && live > 3) {
-                    board[i][j] == 3;
+                    board[i][j] = 3;
                 }
                 if (board[i][j] == 0 && live == 3) {
-                    board[i][j] == 2;
+                    board[i][j] = 2;
                 }
             }
         }
@@ -72,9 +72,9 @@ public class N289_GameOfLife_O {
         for (int i = 0; i < m; i++) {
             for (int j =0; j < n; j++) {
                 if (board[i][j] == 2) {
-                    board[i][j] == 1;
+                    board[i][j] = 1;
                 } else if (board[i][j] == 3) {
-                    board[i][j] == 0;
+                    board[i][j] = 0;
                 }
             }
         }
