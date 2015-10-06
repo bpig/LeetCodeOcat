@@ -41,22 +41,19 @@ public class N289_GameOfLife_B {
                         if (row < 0 || col < 0 || row >= board.length || col >= board[0].length) {
                             continue;
                         }
-                        if (l == 0 && m == 0) {
-                            continue;
-                        }
+                        if (l == 0 && m == 0) { continue; }
                         int value = board[row][col] & 1;
                         status[value]++;
                     }
                 }
                 int self = board[i][j] & 1;
-                if (self == 1) {
-                    if (status[1] == 2 || status[1] == 3) {
-                        self |= 2;
-                    }
-                } else {
-                    if (status[1] == 3) {
-                        self |= 2;
-                    }
+                switch (self) {
+                    case 1:
+                        if (status[1] == 2 || status[1] == 3) { self |= 2; }
+                        break;
+                    case 0:
+                        if (status[1] == 3) { self |= 2; }
+                        break;
                 }
                 board[i][j] = self;
             }
