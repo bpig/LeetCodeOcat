@@ -5,6 +5,9 @@ package N29;
  * Date: 2015-10-06
  */
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Given a pattern and a string str, find if str follows the same pattern.
  * <p/>
@@ -21,6 +24,29 @@ package N29;
  */
 public class N290_WordPattern_B {
     public boolean wordPattern(String pattern, String str) {
-        return false;
+        String[] kv = new String[26];
+        String[] items = str.split(" ");
+        if (items.length != pattern.length()) {
+            return false;
+        }
+        for (int i = 0; i < pattern.length(); ++i) {
+            int key = pattern.charAt(i) - 'a';
+            if (kv[key] == null) {
+                kv[key] = items[i];
+                continue;
+            }
+            if (!kv[key].equals(items[i])) {
+                return false;
+            }
+        }
+        Set<String> unique = new HashSet<>();
+        for (String s : kv) {
+            if (s == null) { continue; }
+            if (unique.contains(s)) {
+                return false;
+            }
+            unique.add(s);
+        }
+        return true;
     }
 }
