@@ -1,7 +1,9 @@
 package N29;
 
-import java.util.HashMap;
-import java.util.Map;
+//import java.util.HashMap;
+import java.util.HashSet;
+//import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by wenwen.xww on 2015/10/6.
@@ -24,32 +26,59 @@ import java.util.Map;
 
 public class N290_WordPattern_O {
     public boolean wordPattern(String pattern, String str) {
-        Map<Character, String> mm = new HashMap<>();
-        Map<String, Character> nn = new HashMap<>();
-
+//        Map<Character, String> mm = new HashMap<>();
+//        Map<String, Character> nn = new HashMap<>();
+//
+//        String[] array = str.split(" ");
+//        if (pattern.length() != array.length) {
+//            return false;
+//        }
+//        int i = 0;
+//        for (; i < pattern.length(); i++) {
+//            if (mm.containsKey(pattern.charAt(i))) {
+//                if (!mm.get(pattern.charAt(i)).equals(array[i])) {
+//                    return false;
+//                }
+//            } else {
+//                if (nn.containsKey(array[i])) {
+//                    if (!nn.get(array[i]).equals(pattern.charAt(i))) {
+//                        return false;
+//                    }
+//                }
+//                mm.put(pattern.charAt(i), array[i]);
+//                nn.put(array[i], pattern.charAt(i));
+//            }
+//        }
+//        if (pattern.length() == i) {
+//            return true;
+//        }
+//        return false;
         String[] array = str.split(" ");
         if (pattern.length() != array.length) {
             return false;
         }
-        int i = 0;
-        for (; i < pattern.length(); i++) {
-            if (mm.containsKey(pattern.charAt(i))) {
-                if (!mm.get(pattern.charAt(i)).equals(array[i])) {
+        String[] kv = new String[26];
+        for (int i = 0; i < pattern.length(); i++) {
+            int index = pattern.charAt(i) - 'a';
+            if (kv[index] == null) {
+                kv[index] = array[i];
+            } else {
+                if (!kv[index].equals(array[i])) {
                     return false;
                 }
-            } else {
-                if (nn.containsKey(array[i])) {
-                    if (!nn.get(array[i]).equals(pattern.charAt(i))) {
-                        return false;
-                    }
-                }
-                mm.put(pattern.charAt(i), array[i]);
-                nn.put(array[i], pattern.charAt(i));
             }
         }
-        if (pattern.length() == i) {
-            return true;
+
+        Set<String> tmp = new HashSet<>();
+        for (int i = 0; i < kv.length; i++) {
+            if (kv[i] == null) {
+                continue;
+            }
+            if (tmp.contains(kv[i])) {
+                return false;
+            }
+            tmp.add(kv[i]);
         }
-        return false;
+        return true;
     }
 }
