@@ -1,9 +1,9 @@
 package N26;
 
 /**
- * Created by wenwen.xww on 2015/11/1.
+ * Created by wenwen.xww on 2015/11/2.
  */
-public class N263_UglyNumber {
+public class N263_UglyNumber_O {
     public boolean isUgly(int num) {
         if (num <= 0) {
             return false;
