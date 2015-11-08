@@ -12,10 +12,10 @@ package N03;
  * <p/>
  * You may assume no duplicates in the array.
  * Here are few examples.
- * [1,3,5,6], 5 → 2
- * [1,3,5,6], 2 → 1
- * [1,3,5,6], 7 → 4
- * [1,3,5,6], 0 → 0
+ * [1,3,5,6], 5 -> 2
+ * [1,3,5,6], 2 -> 1
+ * [1,3,5,6], 7 -> 4
+ * [1,3,5,6], 0 -> 0
  */
 public class N035_SearchInsertPosition_B {
     public int searchInsert(int[] nums, int target) {

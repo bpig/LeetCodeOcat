@@ -13,15 +13,13 @@ package N01; /**
  * <p/>
  * The function prototype should be:
  * bool isMatchRecur(const char *s, const char *p)
- * <p/>
- * Some examples:
- * isMatchRecur("aa","a") → false
- * isMatchRecur("aa","aa") → true
- * isMatchRecur("aaa","aa") → false
- * isMatchRecur("aa", "a*") → true
- * isMatchRecur("aa", ".*") → true
- * isMatchRecur("ab", ".*") → true
- * isMatchRecur("aab", "c*a*b") → true
+ * isMatch("aa","a") -> false
+ * isMatch("aa","aa") -> true
+ * isMatch("aaa","aa") -> false
+ * isMatch("aa", "a*") -> true
+ * isMatch("aa", ".*") -> true
+ * isMatch("ab", ".*") -> true
+ * isMatch("aab", "c*a*b") -> true
  */
 public class N010_RegularExpressionMatching_B {
     public boolean isMatch(String s, String p) {

@@ -12,7 +12,7 @@ import java.util.List;
  * Find all unique triplets in the array which gives the sum of zero.
  * <p/>
  * Note:
- * Elements in a triplet (a,b,c) must be in non-descending order. (ie, a ≤ b ≤ c)
+ * Elements in a triplet (a,b,c) must be in non-descending order. (ie, a <= b <= c)
  * The solution set must not contain duplicate triplets.
  * For example, given array S = {-1 0 1 2 -1 -4},
  * <p/>
