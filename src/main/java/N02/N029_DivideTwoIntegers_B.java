@@ -13,26 +13,20 @@ package N02;
  */
 public class N029_DivideTwoIntegers_B {
     public int divide(int dividend, int divisor) {
-        //todo
-        if (divisor > dividend) {
-            return 0;
+        if (divisor == 0 || (dividend == Integer.MIN_VALUE && divisor == -1)) {
+            return Integer.MAX_VALUE;
         }
-        int ct = 0;
-        int v = 0;
-        while (dividend >= divisor) {
-            divisor <<= 1;
-            v += 1;
-        }
-        ct += 1 << v;
-        dividend -= divisor;
-        while (v > 0) {
-            v--;
-            divisor >>= 1;
-            if (dividend >= divisor) {
-                dividend -= divisor;
-                ct += v;
+        int sign = dividend > 0 ^ divisor > 0 ? -1 : 1;
+        int result = 0;
+        long m = Math.abs((long) dividend);
+        long n = Math.abs((long) divisor);
+        while (m >= n) {
+            long subN = n;
+            for (int subCount = 1; m >= subN; subCount <<= 1, subN <<= 1) {
+                m -= subN;
+                result += subCount;
             }
         }
-        return ct;
+        return sign * result;
     }
 }
