@@ -6,8 +6,9 @@ package N03;
  */
 
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * You are given a string, s, and a list of words, words,
@@ -23,46 +24,99 @@ import java.util.List;
  * (order does not matter).
  */
 public class N030_SubstringWithConcatenationOfAllWords_B {
-    List<Integer> indices = new ArrayList<>();
-    int wordWidth = 0;
-    void check(List<List<Integer>> indexes, List<Integer> cols) {
-        int layout = cols.size();
-        if (layout == indexes.size()) {
-            List<Integer> cp = new ArrayList<>(cols);
-            Collections.sort(cp);
-            for (int i = 1; i < cp.size(); ++i) {
-                if (cp.get(i) != cp.get(i-1) + wordWidth) {
-                    return;
+    public List<Integer> findSubstring(String s, String[] words) {
+        List<Integer> res = new ArrayList<>();
+        if (words.length == 0) {
+            return res;
+        }
+        int len = words[0].length();
+        int num = words.length;
+        if (len * num > s.length()) {
+            return res;
+        }
+
+        //histogram of words in L
+        Map<String, Integer> dic = new HashMap<>();
+        for (String word : words) {
+            dic.put(word, dic.getOrDefault(word, 0) + 1);
+        }
+
+        //the word that starts from i in S
+        String[] sDic = new String[s.length() - len + 1];
+        for (int i = 0; i < sDic.length; i++) {
+            String sub = s.substring(i, i + len);
+            if (dic.containsKey(sub)) {
+                sDic[i] = sub;
+            } else {
+                sDic[i] = "";
+            }
+        }
+
+        //traverse in order of 0,0+len,...,1,1+len,...len-1,len-1+len...therefore it is O(n) despite of two loops
+        for (int i = 0; i < len; i++) {
+            //start of concatenation
+            int start = i;
+            //number of words found
+            int found = 0;
+            //dynamic word histogram of words in substring(start,j);
+            Map<String, Integer> tempDic = new HashMap<>();
+            for (int j = i; j <= s.length() - len; j = j + len) {
+                String word = sDic[j];
+                if (word.equals("")) {
+                    tempDic = new HashMap<>();
+                    start = j + len;
+                    found = 0;
+                    continue;
+                } else {
+                    tempDic.put(word, tempDic.getOrDefault(word, 0) + 1);
+                    found++;
+                }
+                // if we over-count a word, delete the first word in front.
+                // Also delete the words before that.
+                if (tempDic.get(word) > dic.get(word)) {
+                    while (!sDic[start].equals(word)) {
+                        tempDic.put(sDic[start], tempDic.get(sDic[start]) - 1);
+                        start += len;
+                        found--;
+                    }
+                    tempDic.put(word, tempDic.get(word) - 1);
+                    start += len;
+                    found--;
+                }
+                if (found == num) {
+                    res.add(start);
                 }
             }
-            indices.add(cp.get(0));
-            return;
         }
-        List<Integer> data = indexes.get(layout);
-        for (int i = 0; i < data.size(); ++i) {
-            cols.add(data.get(i));
-            check(indexes, cols);
-            cols.remove(cols.size() - 1);
-        }
+        return res;
     }
-    public List<Integer> findSubstring(String s, String[] words) {
-        List<List<Integer>> indexes = new ArrayList<>();
-        wordWidth = words[0].length();
-        for (int i = 0; i < words.length; ++i) {
-            List<Integer> ls = new ArrayList<>();
-            int idx = 0;
-            while (true) {
-                idx = s.indexOf(words[i], idx);
-                if (idx == -1) {
+
+    public List<Integer> scoreB(String s, String[] words) {
+        Map<String, Integer> counts = new HashMap<>();
+        for (String word : words) {
+            counts.put(word, counts.getOrDefault(word, 0) + 1);
+        }
+        int n = s.length();
+        int num = words.length;
+        int len = words[0].length();
+        List<Integer> ret = new ArrayList<>();
+        for (int i = 0; i <= n - num * len; ++i) {
+            Map<String, Integer> seen = new HashMap<>();
+            int j = 0;
+            for (; j < num; ++j) {
+                String word = s.substring(i + j * len, i + j * len + len);
+                if (!counts.containsKey(word)) {
                     break;
                 }
-                ls.add(idx);
-                idx++;
+                seen.put(word, seen.getOrDefault(word, 0) + 1);
+                if (seen.get(word) > counts.get(word)) {
+                    break;
+                }
             }
-            indexes.add(ls);
+            if (j == num) {
+                ret.add(i);
+            }
         }
-        List<Integer> cols = new ArrayList<>();
-        check(indexes, cols);
-        return indices;
+        return ret;
     }
 }
