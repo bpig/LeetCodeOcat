@@ -10,10 +10,12 @@ import static org.junit.Assert.assertEquals;
  */
 public class N032_LongestValidParentheses_BTest {
     N032_LongestValidParentheses_B nb = new N032_LongestValidParentheses_B();
+
     @Test
     public void testValidLength() throws Exception {
-        assertEquals(4, nb.validLength("()()"));
-        assertEquals(0, nb.validLength(")()(("));
-        assertEquals(4, nb.validLength("())(())"));
+        assertEquals(4, nb.longestValidParentheses("()()"));
+        assertEquals(2, nb.longestValidParentheses(")()(("));
+        assertEquals(4, nb.longestValidParentheses("())(())"));
+        assertEquals(50, nb.longestValidParentheses("))))())()()))(()()))((())()(()()(((()(()()()()((()(((())())(()(()(()(((()(())(()(()(()))(()())()(((((())())())))))))(((((((()())()(())))(()))))((((()(()(()("));
     }
 }

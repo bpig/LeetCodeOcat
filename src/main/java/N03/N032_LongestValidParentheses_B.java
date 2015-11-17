@@ -5,7 +5,10 @@ package N03;
  * Date: 2015-09-24
  */
 
-import java.util.Stack;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Set;
 
 /**
  * Given a string containing just the characters '(' and ')',
@@ -17,28 +20,67 @@ import java.util.Stack;
  * where the longest valid parentheses substring is "()()", which has length = 4.
  */
 public class N032_LongestValidParentheses_B {
-    public int validLength(String s) {
-        Stack<Character> stack = new Stack<>();
-        int idx = s.length() - 1;
-        for (; idx >= 0; --idx) {
-            if (stack.size() > s.length() / 2) {
-                break;
-            }
-            char c = s.charAt(idx);
+    boolean isValid(String s) {
+        int count = 0;
+        for (int i = 0; i < s.length(); ++i) {
+            char c = s.charAt(i);
             if (c == '(') {
-                if (stack.empty()) {
-                    break;
-                } else {
-                    stack.pop();
-                }
-            } else {
-                stack.add(c);
+                count++;
+            } else if (c == ')' && count-- == 0) {
+                return false;
             }
         }
-        return s.length() - idx - 1 - stack.size();
+        return count == 0;
     }
-    public int longestValidParentheses(String s) {
+
+    public int scoreB(String s) {
+        Queue<String> queue = new LinkedList<>();
+        Set<String> visited = new HashSet<>();
+        queue.add(s);
+        visited.add(s);
+        while (!queue.isEmpty()) {
+            String t = queue.poll();
+            if (isValid(t)) {
+                return t.length();
+            }
+            String left = t.substring(0, t.length() - 1);
+            if (!visited.contains(left)) {
+                queue.add(left);
+                visited.add(left);
+            }
+            String right = t.substring(1);
+            if (!visited.contains(right)) {
+                queue.add(right);
+                visited.add(right);
+            }
+        }
         return 0;
+    }
+
+    public int longestValidParentheses(String s) {
+        if (s == null || s.length() <= 1) {
+            return 0;
+        }
+        int start = -1;
+        int res = 0;
+        LinkedList<Integer> stack = new LinkedList<>();
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == '(') {
+                stack.push(i);
+                continue;
+            }
+            if (!stack.isEmpty()) {
+                stack.pop();
+                if (!stack.isEmpty()) {
+                    res = Math.max(res, i - stack.peek());
+                } else {
+                    res = Math.max(res, i - start);
+                }
+            } else {
+                start = i;
+            }
+        }
+        return res;
     }
 
 }

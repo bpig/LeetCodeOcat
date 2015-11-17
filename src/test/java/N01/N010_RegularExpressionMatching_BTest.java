@@ -2,10 +2,6 @@ package N01;
 
 import org.junit.Test;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-
 import static junit.framework.TestCase.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -28,17 +24,6 @@ public class N010_RegularExpressionMatching_BTest {
         assertFalse(nb.isMatch("ab", ".*c"));
         assertTrue(nb.isMatch("aaa", "a*a"));
         assertTrue(nb.isMatch("aaa", "a.*a"));
-
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
-        Date date = new Date();
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(date);
-
-        System.out.println(df.format(date));
-        cal.add(Calendar.DATE, -1);
-        date = cal.getTime();
-        System.out.println(df.format(date));
     }
 
 }
