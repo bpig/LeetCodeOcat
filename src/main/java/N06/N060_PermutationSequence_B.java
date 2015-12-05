@@ -31,6 +31,7 @@ public class N060_PermutationSequence_B {
      * Part one, find the array A[0..n-1] that satisfies:
      * <p/>
      * k-1 = (n-1)!A[0] + (n-2)!A[1] + ... + 2!A[n-3] + 1!A[n-2] + 0!*A[n-1]
+     * 4 = 2!*2 + 1!*0 + 0!*1
      * and 0 <= A[i] < n-i (so the last item in the formula above is always 0).
      * <p/>
      * It's obvious that the array A[0..n-1] can be calculated
