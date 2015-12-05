@@ -2,7 +2,7 @@ package N08;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import static junit.framework.TestCase.assertEquals;
 
 /**
  * Created: shuai.li(286287737@qq.com)
@@ -14,9 +14,15 @@ public class N085_MaximalRectangle_BTest {
     @Test
     public void testMaximalRectangle() throws Exception {
         char[][] matrix;
+
         matrix = new char[][]{
-                {1, 1, 1},
-                {0, 0, 0}
+                {'1', '0'}
+        };
+        assertEquals(1, nb.maximalRectangle(matrix));
+
+        matrix = new char[][]{
+                {'1', '1', '1'},
+                {'0', '0', '0'}
         };
         assertEquals(3, nb.maximalRectangle(matrix));
     }
