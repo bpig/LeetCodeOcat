@@ -19,7 +19,7 @@ package N03;
  * 1,1,5 -> 1,5,1
  * <p/>
  * 在当前序列中，从尾端往前寻找两个相邻元素，前一个记为first，后一个记为second，
- * 并且满足first 小于 second。然后再从尾端寻找另一个元素number，如果满足first 小于number，
+ * 并且满足first小于second。然后再从尾端寻找另一个元素number，如果满足first 小于number，
  * 即将第first个元素与number元素对调，并将second元素之后（包括second）的所有元素颠倒排序，即求出下一个序列
  * <p/>
  * example: 6，3，4，9，8，7，1
@@ -29,13 +29,15 @@ package N03;
  * 得到最终的结果：6，3，7，1，4，8，9
  * <p/>
  * void nextPermutation(vector<int>& nums) {
- * next_permutation(begin(nums), end(nums));
+ * `    next_permutation(begin(nums), end(nums));
  * }
  * <p/>
  * void nextPermutation (vector<int>& nums) {
- * auto i = is_sorted_until(nums.rbegin(), nums.rend());
- * if( i != nums.rend()) { swap(*i,*upper_bound(nums.rbegin(), i, *i)) };
- * reverse(nums.rbegin(), i);
+ * `    auto i = is_sorted_until(nums.rbegin(), nums.rend());
+ * `    if( i != nums.rend()) {
+ * `        swap(*i, *upper_bound(nums.rbegin(), i, *i));
+ * `    };
+ * `    reverse(nums.rbegin(), i);
  * }
  */
 public class N031_NextPermutation_B {
