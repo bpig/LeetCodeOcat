@@ -18,6 +18,27 @@ import util.ListNode;
  */
 public class N082_RemoveDuplicatesFromSortedListII_B {
     public ListNode deleteDuplicates(ListNode head) {
+        if (head == null) {
+            return head;
+        }
+        ListNode p = new ListNode(Integer.MIN_VALUE);
+        ListNode ptr = p;
+        ListNode pre = p;
+        while (head != null) {
+            if (pre.val != head.val
+                    && (head.next == null || head.next.val != head.val))
+            {
+                ptr.next = head;
+                ptr = ptr.next;
+            }
+            pre = head;
+            head = head.next;
+        }
+        ptr.next = null;
+        return p.next;
+    }
+
+    public ListNode deleteDuplicatesB(ListNode head) {
         if (head == null || head.next == null) {
             return head;
         }
@@ -34,7 +55,7 @@ public class N082_RemoveDuplicatesFromSortedListII_B {
         return deleteDuplicates(p);
     }
 
-    public ListNode scoreAMinus(ListNode head) {
+    public ListNode scoreBPlus(ListNode head) {
         if (head == null) {
             return head;
         }

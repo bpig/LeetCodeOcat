@@ -17,6 +17,11 @@ public class TreeNode {
     }
 
     @Override
+    public boolean equals(Object obj) {
+        return toString().equals(obj.toString());
+    }
+
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(val);

@@ -5,6 +5,7 @@ package N06;
  * Date: 2015-12-06
  */
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -36,9 +37,45 @@ import java.util.List;
  * Corner Cases:
  * A line other than the last line might contain only one word. What should you do in this case?
  * In this case, that line should be left-justified.
+ * <p/>
+ * For each line, I first figure out which words can fit in.
+ * According to the code, these words are words[i] through words[i+k-1].
+ * Then spaces are added between the words.
+ * The trick here is to use mod operation to manage the spaces that can't be evenly distrubuted:
+ * the first (L-l) % (k-1) gaps acquire an additional space.
  */
 public class N068_TextJustification_B {
     public List<String> fullJustify(String[] words, int maxWidth) {
-        return null;
+        List<String> list = new ArrayList<>();
+
+        for (int i = 0, w; i < words.length; i = w) {
+            int len = -1;
+            for (w = i; w < words.length && len + words[w].length() + 1 <= maxWidth; w++) {
+                len += words[w].length() + 1;
+            }
+
+            StringBuilder strBuilder = new StringBuilder(words[i]);
+            int space = 1, extra = 0;
+            if (w != i + 1 && w != words.length) { // not 1 char, not last line
+                space = (maxWidth - len) / (w - i - 1) + 1;
+                extra = (maxWidth - len) % (w - i - 1);
+            }
+            for (int j = i + 1; j < w; j++) {
+                for (int s = space; s > 0; s--) {
+                    strBuilder.append(' ');
+                }
+                if (extra-- > 0) {
+                    strBuilder.append(' ');
+                }
+                strBuilder.append(words[j]);
+            }
+            int strLen = maxWidth - strBuilder.length();
+            while (strLen-- > 0) {
+                strBuilder.append(' ');
+            }
+            list.add(strBuilder.toString());
+        }
+
+        return list;
     }
 }
