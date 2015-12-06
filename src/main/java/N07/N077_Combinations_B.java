@@ -25,6 +25,7 @@ import java.util.List;
  * ]
  * <p/>
  * https://leetcode.com/discuss/37021/1-liner-3-liner-4-liner
+ * https://leetcode.com/discuss/33887/14ms-c-using-bit-manipulation
  */
 public class N077_Combinations_B {
     public List<List<Integer>> combine(int n, int k) {
