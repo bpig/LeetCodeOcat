@@ -12,10 +12,10 @@ public class N279_PerfectSquares_BTest {
     N279_PerfectSquares_B nb = new N279_PerfectSquares_B();
     @Test
     public void testNumSquares() throws Exception {
+        assertEquals(3, nb.numSquares(12));
         assertEquals(2, nb.numSquares(10));
         assertEquals(1, nb.numSquares(4));
         assertEquals(2, nb.numSquares(2));
-        assertEquals(3, nb.numSquares(12));
         assertEquals(3, nb.numSquares(48));
         assertEquals(3, nb.numSquares(9600));
     }
