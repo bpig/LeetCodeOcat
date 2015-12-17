@@ -26,7 +26,7 @@ public class N046_Permutations_B {
 
     private void backTrack(ArrayList<Integer> perm, int i, int[] nums) {
         if (i == nums.length) {
-            list.add(new ArrayList(perm));
+            list.add(new ArrayList<Integer>(perm));
             return;
         }
         //Insert elements in the array by increasing index

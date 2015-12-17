@@ -57,7 +57,7 @@ public class N127_WordLadder_B {
                     String word = iter.next();
                     if (transformable(word, source)) {
                         iter.remove();
-                        if (word == endWord) {
+                        if (word.equals(endWord)) {
                             return level + 1;
                         }
                         queue.add(word);
@@ -71,31 +71,32 @@ public class N127_WordLadder_B {
 
     public int ladderLength(String beginWord, String endWord, Set<String> wordList) {
         wordList.add(endWord);
-        Deque<String> queue = new ArrayDeque<>();
+        Deque<String> dq = new ArrayDeque<>();
         int level = 1;
-        queue.add(beginWord);
-        while (!queue.isEmpty()) {
-            int ct = queue.size();
-            for (int i = 0; i < ct; ++i) {
-                String source = queue.pop();
-                for (int j = 0; j < source.length(); ++j) {
-                    char[] chars = source.toCharArray();
+        dq.add(beginWord);
+        while (!dq.isEmpty()) {
+            int ct = dq.size();
+            while (ct > 0) {
+                String word = dq.pollFirst();
+                for (int i = 0; i < word.length(); ++i) {
+                    char[] chars = word.toCharArray();
                     for (char c = 'a'; c <= 'z'; ++c) {
-                        chars[j] = c;
-                        String word = new String(chars);
-                        if (wordList.contains(word)) {
-                            if (word.equals(endWord)) {
-                                return level + 1;
-                            }
-                            queue.add(word);
-                            wordList.remove(word);
+                        chars[i] = c;
+                        String trans = new String(chars);
+                        if (!wordList.contains(trans)) {
+                            continue;
                         }
+                        if (trans.equals(endWord)) {
+                            return level + 1;
+                        }
+                        dq.add(trans);
+                        wordList.remove(trans);
                     }
                 }
+                ct--;
             }
             level++;
         }
         return 0;
     }
-
 }

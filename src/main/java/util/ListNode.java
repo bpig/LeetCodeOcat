@@ -25,6 +25,11 @@ public class ListNode {
     }
 
     @Override
+    public boolean equals(Object obj) {
+        return toString().equals(obj.toString());
+    }
+
+    @Override
     public String toString() {
         StringBuilder str = new StringBuilder();
         ListNode ln = this;

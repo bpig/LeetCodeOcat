@@ -17,7 +17,7 @@ import java.util.Arrays;
  * Children with a higher rating get more candies than their neighbors.
  * What is the minimum candies you must give?
  */
-public class n135_Candy_B {
+public class N135_Candy_B {
     public int candy(int[] ratings) {
         int candies[] = new int[ratings.length];
         Arrays.fill(candies, 1);
