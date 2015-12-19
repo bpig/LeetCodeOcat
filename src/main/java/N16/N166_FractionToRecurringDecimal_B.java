@@ -36,7 +36,6 @@ public class N166_FractionToRecurringDecimal_B {
         if (nl != 0) {
             sb.append(".");
         }
-
         int index = 0;
         while (nl != 0) {
             nl *= 10;
@@ -52,7 +51,6 @@ public class N166_FractionToRecurringDecimal_B {
             }
             nl %= dl;
         }
-
         if (neg) {
             sb.insert(0, "-");
         }

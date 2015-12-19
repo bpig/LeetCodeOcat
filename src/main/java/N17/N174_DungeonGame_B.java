@@ -34,21 +34,21 @@ public class N174_DungeonGame_B {
         int m = dungeon.length;
         int n = dungeon[0].length;
 
-        for (int i = m - 1; i >= 0; i--) {
-            for (int j = n - 1; j >= 0; j--) {
+        for (int i = m - 1; i >= 0; --i) {
+            for (int j = n - 1; j >= 0; --j) {
                 if (i == m - 1 && j == n - 1) {
                     dungeon[i][j] = dungeon[i][j] > 0 ? 1 : 1 - dungeon[i][j];
-                } else if (j == n - 1) {
-                    int result = dungeon[i + 1][j] - dungeon[i][j];
-                    dungeon[i][j] = result > 0 ? result : 1;
                 } else if (i == m - 1) {
-                    int result = dungeon[i][j + 1] - dungeon[i][j];
-                    dungeon[i][j] = result > 0 ? result : 1;
+                    int gap = dungeon[i][j + 1] - dungeon[i][j];
+                    dungeon[i][j] = gap > 0 ? gap : 1;
+                } else if (j == n - 1) {
+                    int gap = dungeon[i + 1][j] - dungeon[i][j];
+                    dungeon[i][j] = gap > 0 ? gap : 1;
                 } else {
-                    int result1 = dungeon[i][j + 1] - dungeon[i][j];
-                    int result2 = dungeon[i + 1][j] - dungeon[i][j];
-                    int result = Math.min(result1, result2);
-                    dungeon[i][j] = result > 0 ? result : 1;
+                    int gap1 = dungeon[i][j + 1] - dungeon[i][j];
+                    int gap2 = dungeon[i + 1][j] - dungeon[i][j];
+                    int gap = Math.min(gap1, gap2);
+                    dungeon[i][j] = gap > 0 ? gap : 1;
                 }
             }
         }
