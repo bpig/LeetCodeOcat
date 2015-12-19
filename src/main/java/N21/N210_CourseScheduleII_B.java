@@ -1,4 +1,4 @@
-package N20;
+package N21;
 
 /**
  * Created: shuai.li(286287737@qq.com)
@@ -39,12 +39,14 @@ public class N210_CourseScheduleII_B {
     public static int[] findOrder(int numCourses, int[][] edges) {
         int[] result = new int[numCourses];
         int[] preCnt = new int[numCourses];
-        List<Integer>[] nextSet = new List[numCourses];
-        Arrays.fill(nextSet, new ArrayList<>());
+        List<List<Integer>> nextSet = new ArrayList<>();
+        for (int i = 0; i < numCourses; ++i) {
+            nextSet.add(new ArrayList<>());
+        }
 
         for (int[] edge : edges) {
             preCnt[edge[0]]++;
-            nextSet[edge[1]].add(edge[0]);
+            nextSet.get(edge[1]).add(edge[0]);
         }
 
         Queue<Integer> sourceNode = new LinkedList<>();
@@ -60,7 +62,7 @@ public class N210_CourseScheduleII_B {
             }
             int n = sourceNode.poll();
             result[i] = n;
-            for (int next : nextSet[n]) {
+            for (int next : nextSet.get(n)) {
                 preCnt[next]--;
                 if (preCnt[next] == 0) {
                     sourceNode.add(next);

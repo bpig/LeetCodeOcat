@@ -1,5 +1,6 @@
 package N20;
 
+import N21.N210_CourseScheduleII_B;
 import org.junit.Test;
 
 import static org.junit.Assert.assertArrayEquals;

@@ -64,6 +64,9 @@ public class TreeNode {
                 continue;
             }
             nodes[i].left = nodes[idx++];
+            if (idx >= nodes.length) {
+                break;
+            }
             nodes[i].right = nodes[idx++];
         }
         return nodes[0];
