@@ -20,7 +20,47 @@ package N28;
  */
 public class N287_FindTheDuplicateNumber_B {
     public int findDuplicate(int[] nums) {
+        int slow = 0;
+        int fast = 0;
+        int finder = 0;
+
+        while (true) {
+            slow = nums[slow];
+            fast = nums[nums[fast]];
+
+            if (slow == fast) {
+                break;
+            }
+        }
+
+        while (true) {
+            slow = nums[slow];
+            finder = nums[finder];
+            if (slow == finder) {
+                return slow;
+            }
+        }
+    }
+
+    int nlogn(int[] nums) {
         int n = nums.length - 1;
-        return n;
+        int low = 1;
+        int high = n;
+        int mid;
+        while (low < high) {
+            mid = (low + high) / 2;
+            int count = 0;
+            for (int num : nums) {
+                if (num <= mid) {
+                    count++;
+                }
+            }
+            if (count > mid) {
+                high = mid;
+            } else {
+                low = mid + 1;
+            }
+        }
+        return low;
     }
 }

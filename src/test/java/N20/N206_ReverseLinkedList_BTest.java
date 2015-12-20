@@ -9,8 +9,8 @@ import static org.junit.Assert.assertEquals;
  * Created: shuai.li(286287737@qq.com)
  * Date: 2015-09-20
  */
-public class N205_ReverseLinkedList_BTest {
-    N205_ReverseLinkedList_B nb = new N205_ReverseLinkedList_B();
+public class N206_ReverseLinkedList_BTest {
+    N206_ReverseLinkedList_B nb = new N206_ReverseLinkedList_B();
     @Test
     public void testReverseList() throws Exception {
         ListNode ln = ListNode.create("1,2,3,4");

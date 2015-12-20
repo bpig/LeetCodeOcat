@@ -13,7 +13,7 @@ import util.ListNode;
  * A linked list can be reversed either iteratively or recursively.
  * Could you implement both?
  */
-public class N205_ReverseLinkedList_B {
+public class N206_ReverseLinkedList_B {
     public ListNode reverseList(ListNode head) {
         if (head == null) {
             return null;
