@@ -33,8 +33,11 @@ public class N187_RepeatedDNASequences_B {
 
         char[] map = new char[26];
         map['A' - 'A'] = 0; // A = 00
+
         map['C' - 'A'] = 1; // B = 01
+
         map['G' - 'A'] = 2; // C = 10
+
         map['T' - 'A'] = 3; // D = 11
 
         int len = s.length();
