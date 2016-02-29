@@ -17,11 +17,19 @@ public class N039_CombinationSum_BTest {
 
     @Test
     public void testCombinationSum() throws Exception {
-        List<List<Integer>> expect = new ArrayList<List<Integer>>() {{
+        List<List<Integer>> expect;
+        expect = new ArrayList<List<Integer>>() {{
             add(Arrays.asList(2, 2, 3));
             add(Arrays.asList(7));
         }};
 
         assertEquals(expect, nb.combinationSum(new int[]{2, 3, 7}, 7));
+
+        expect = new ArrayList<List<Integer>>() {{
+            add(Arrays.asList(3, 4, 4));
+            add(Arrays.asList(3, 8));
+            add(Arrays.asList(4, 7));
+        }};
+        assertEquals(expect, nb.combinationSum(new int[]{8, 7, 4, 3}, 11));
     }
 }

@@ -12,9 +12,9 @@ import java.util.List;
 /**
  * Given a set of candidate numbers (C) and a target number (T),
  * find all unique combinations in C where the candidate numbers sums to T.
- * <p/>
+ * <p>
  * The same repeated number may be chosen from C unlimited number of times.
- * <p/>
+ * <p>
  * Note:
  * All numbers (including target) will be positive integers.
  * Elements in a combination (a1, a2, ... , ak) must be in non-descending order. (ie, a1 <= a2 <= ... <= ak).
@@ -25,7 +25,7 @@ import java.util.List;
  * [2, 2, 3]
  */
 public class N039_CombinationSum_B {
-    List<List<Integer>> ret = new ArrayList<>();
+    List<List<Integer>> ret;
 
     void recurMain(int[] candidates, int next, int target, List<Integer> nums) {
         if (target == 0) {
@@ -47,6 +47,8 @@ public class N039_CombinationSum_B {
     }
 
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
+        ret = new ArrayList<>();
+        Arrays.sort(candidates);
         List<Integer> nums = new ArrayList<>();
         recurMain(candidates, 0, target, nums);
         return ret;
