@@ -7,7 +7,7 @@ package N05;
 
 /**
  * Follow up for N-Queens problem.
- * <p/>
+ * <p>
  * Now, instead outputting board configurations,
  * return the total number of distinct solutions.
  */

@@ -2,7 +2,7 @@ package N05;
 
 /**
  * Created: shuai.li(286287737@qq.com)
- * Date: 2015-11-29
+ * Date: 2016-03-02
  */
 
 import java.util.ArrayList;
@@ -21,10 +21,12 @@ import java.util.List;
  * ]
  * You should return [1,2,3,6,9,8,7,4,5].
  */
-public class N054_SpiralMatrix_B {
+
+public class N054_SpiralMatrix {
     public List<Integer> spiralOrder(int[][] matrix) {
+        List<Integer> ans = new ArrayList<>();
         if (matrix.length == 0 || matrix[0].length == 0) {
-            return new ArrayList<>();
+            return ans;
         }
         int m = matrix.length;
         int n = matrix[0].length;
@@ -32,28 +34,27 @@ public class N054_SpiralMatrix_B {
         int d = m - 1;
         int l = 0;
         int r = n - 1;
-        List<Integer> ans = new ArrayList<>(m * n);
         while (true) {
-            for (int col = l; col <= r; ++col) {
-                ans.add(matrix[u][col]);
+            for (int i = l; i <= r; ++i) {
+                ans.add(matrix[u][i]);
             }
             if (++u > d) {
                 break;
             }
-            for (int row = u; row <= d; ++row) {
-                ans.add(matrix[row][r]);
+            for (int i = u; i <= d; ++i) {
+                ans.add(matrix[i][r]);
             }
             if (--r < l) {
                 break;
             }
-            for (int col = r; col >= l; --col) {
-                ans.add(matrix[d][col]);
+            for (int i = r; i >= l; --i) {
+                ans.add(matrix[d][i]);
             }
             if (--d < u) {
                 break;
             }
-            for (int row = d; row >= u; --row) {
-                ans.add(matrix[row][l]);
+            for (int i = d; i >= u; --i) {
+                ans.add(matrix[i][l]);
             }
             if (++l > r) {
                 break;
