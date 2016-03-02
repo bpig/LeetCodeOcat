@@ -2,7 +2,7 @@ package N04;
 
 /**
  * Created: shuai.li(286287737@qq.com)
- * Date: 2015-09-27
+ * Date: 2016-02-29
  */
 
 import java.util.*;
@@ -24,34 +24,36 @@ import java.util.*;
  * [2, 6]
  * [1, 1, 6]
  */
-public class N040_CombinationSumII_B {
-    Set<List<Integer>> ret = new HashSet<>();
+public class N040_CombinationSumII {
+    List<List<Integer>> ans;
 
-    void recur(int[] candidates, int next, int target, List<Integer> nums) {
+    void recur(int[] candidates, int next, int target, int[] nums, int idx) {
         if (target == 0) {
-            ret.add(new ArrayList<>(nums));
-        }
-
-        if (next == candidates.length) {
+            List<Integer> one = new ArrayList<>();
+            for (int i = 0; i < idx; ++i) {
+                one.add(nums[i]);
+            }
+            ans.add(one);
             return;
         }
-
-        int value = candidates[next];
-        if (target < value) {
-            return;
+        int pre = 0;
+        for (int i = next; i < candidates.length; ++i) {
+            if (candidates[i] != pre) {
+                if (target < candidates[i]) {
+                    break;
+                }
+                nums[idx] = candidates[i];
+                recur(candidates, i + 1, target - candidates[i], nums, idx + 1);
+                pre = candidates[i];
+            }
         }
-
-        nums.add(value);
-        recur(candidates, next + 1, target - value, nums);
-        nums.remove(nums.size() - 1);
-
-        recur(candidates, next + 1, target, nums);
     }
 
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
+        ans = new ArrayList<>();
         Arrays.sort(candidates);
-        List<Integer> nums = new ArrayList<>();
-        recur(candidates, 0, target, nums);
-        return new ArrayList<>(ret);
+        recur(candidates, 0, target, new int[candidates.length], 0);
+        return new ArrayList<>(ans);
     }
+
 }

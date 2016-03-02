@@ -2,7 +2,7 @@ package N04;
 
 /**
  * Created: shuai.li(286287737@qq.com)
- * Date: 2015-11-22
+ * Date: 2016-03-02
  */
 
 /**
@@ -18,7 +18,8 @@ package N04;
  * 3,0  3,1  3,2  3,3  3,4         n = 4
  * 4,0  4,1  4,2  4,3  4,4         n = 5
  */
-public class N048_RotateImage_B {
+
+public class N048_RotateImage {
     public void rotate(int[][] matrix) {
         int n = matrix.length;
         for (int i = 0; i < n / 2; ++i) {

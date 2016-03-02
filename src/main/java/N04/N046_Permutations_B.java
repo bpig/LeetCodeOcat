@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  * Given a collection of numbers, return all possible permutations.
- * <p/>
+ * <p>
  * For example,
  * [1,2,3] have the following permutations:
  * [1,2,3], [1,3,2], [2,1,3], [2,3,1], [3,1,2], and [3,2,1].
@@ -26,7 +26,7 @@ public class N046_Permutations_B {
 
     private void backTrack(ArrayList<Integer> perm, int i, int[] nums) {
         if (i == nums.length) {
-            list.add(new ArrayList<Integer>(perm));
+            list.add(new ArrayList<>(perm));
             return;
         }
         //Insert elements in the array by increasing index
