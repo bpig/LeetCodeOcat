@@ -10,7 +10,7 @@ import util.ListNode;
 /**
  * Given a list, rotate the list to the right by k places,
  * where k is non-negative.
- * <p/>
+ * <p>
  * For example:
  * Given 1->2->3->4->5->NULL and k = 2,
  * return 4->5->1->2->3->NULL.
@@ -34,6 +34,7 @@ public class N061_RotateList_B {
         dummy.next = null;
         return head;
     }
+
     public ListNode scoreB(ListNode head, int k) {
         ListNode dummy = new ListNode(0);
         dummy.next = head;

@@ -11,9 +11,10 @@ import static org.junit.Assert.assertEquals;
  */
 public class N083_RemoveDuplicatesFromSortedList_BTest {
     N083_RemoveDuplicatesFromSortedList_B nb = new N083_RemoveDuplicatesFromSortedList_B();
+
     @Test
     public void testDeleteDuplicates() throws Exception {
-        ListNode ln = ListNode.create("1,1,2,3,3");
+        ListNode ln = ListNode.create("1,1,2,3,3,3");
         ListNode expect = ListNode.create("1,2,3");
         assertEquals(expect.toString(), nb.deleteDuplicates(ln).toString());
     }

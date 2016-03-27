@@ -11,7 +11,7 @@ import util.ListNode;
  * Given a sorted linked list,
  * delete all nodes that have duplicate numbers,
  * leaving only distinct numbers from the original list.
- * <p/>
+ * <p>
  * For example,
  * Given 1->2->3->3->4->4->5, return 1->2->5.
  * Given 1->1->1->2->3, return 2->3.
@@ -26,8 +26,7 @@ public class N082_RemoveDuplicatesFromSortedListII_B {
         ListNode pre = p;
         while (head != null) {
             if (pre.val != head.val
-                    && (head.next == null || head.next.val != head.val))
-            {
+                    && (head.next == null || head.next.val != head.val)) {
                 ptr.next = head;
                 ptr = ptr.next;
             }
