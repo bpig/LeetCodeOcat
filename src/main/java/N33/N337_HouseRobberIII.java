@@ -33,25 +33,22 @@ import java.util.Map;
 public class N337_HouseRobberIII {
     Map[] content;
 
-    int recur(TreeNode q, int ok) {
-        if (q == null) {
+    int recur(TreeNode node, int rob) {
+        if (node == null) {
             return 0;
         }
-        if (content[ok].containsKey(q)) {
-            return (int) content[ok].get(q);
+        if (content[rob].containsKey(node)) {
+            return (int) content[rob].get(node);
         }
-        int ans = recur(q.left, 1) + recur(q.right, 1);
-        if (ok == 1) {
-            ans = Math.max(ans, q.val + recur(q.left, 0) + recur(q.right, 0));
+        int ans = recur(node.left, 1) + recur(node.right, 1);
+        if (rob == 1) {
+            ans = Math.max(ans, node.val + recur(node.left, 0) + recur(node.right, 0));
         }
-        content[ok].put(q, ans);
+        content[rob].put(node, ans);
         return ans;
     }
 
     public int rob(TreeNode root) {
-        if (root == null) {
-            return 0;
-        }
         content = new Map[2];
         content[0] = new HashMap<TreeNode, Integer>();
         content[1] = new HashMap<TreeNode, Integer>();
