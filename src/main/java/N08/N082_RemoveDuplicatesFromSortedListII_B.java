@@ -21,9 +21,9 @@ public class N082_RemoveDuplicatesFromSortedListII_B {
         if (head == null) {
             return head;
         }
-        ListNode p = new ListNode(Integer.MIN_VALUE);
-        ListNode ptr = p;
-        ListNode pre = p;
+        ListNode dummy = new ListNode(Integer.MIN_VALUE);
+        ListNode ptr = dummy;
+        ListNode pre = dummy;
         while (head != null) {
             if (pre.val != head.val
                     && (head.next == null || head.next.val != head.val)) {
@@ -34,7 +34,7 @@ public class N082_RemoveDuplicatesFromSortedListII_B {
             head = head.next;
         }
         ptr.next = null;
-        return p.next;
+        return dummy.next;
     }
 
     public ListNode deleteDuplicatesB(ListNode head) {

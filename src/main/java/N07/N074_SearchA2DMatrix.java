@@ -2,7 +2,7 @@ package N07;
 
 /**
  * Created: shuai.li(286287737@qq.com)
- * Date: 2015-11-08
+ * Date: 2016-03-27
  */
 
 /**
@@ -22,28 +22,24 @@ package N07;
  * ]
  * Given target = 3, return true.
  */
-public class N074_SearchA2DMatrix_B {
-    public int getValue(int[][] matrix, int num) {
-        int n = matrix[0].length;
-        int row = num / n;
-        int col = num % n;
-        return matrix[row][col];
-    }
-
+public class N074_SearchA2DMatrix {
     public boolean searchMatrix(int[][] matrix, int target) {
+        if (matrix.length == 0 || matrix[0].length == 0) {
+            return false;
+        }
         int m = matrix.length;
         int n = matrix[0].length;
         int lo = 0;
         int hi = m * n - 1;
         while (lo <= hi) {
             int mid = lo + (hi - lo) / 2;
-            int val = getValue(matrix, mid);
-            if (val == target) {
+            int value = matrix[mid / n][mid % n];
+            if (value == target) {
                 return true;
-            } else if (val < target) {
-                lo = mid + 1;
-            } else {
+            } else if (value > target) {
                 hi = mid - 1;
+            } else {
+                lo = mid + 1;
             }
         }
         return false;

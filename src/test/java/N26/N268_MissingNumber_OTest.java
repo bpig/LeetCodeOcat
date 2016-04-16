@@ -9,6 +9,7 @@ import static org.junit.Assert.*;
  */
 public class N268_MissingNumber_OTest {
     N268_MissingNumber_O example = new N268_MissingNumber_O();
+
     @Test
     public void testMissingNumber() throws Exception {
         int[] arr = {0, 1, 3};

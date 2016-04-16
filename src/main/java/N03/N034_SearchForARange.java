@@ -15,7 +15,6 @@ package N03;
  * return [3, 4].
  */
 public class N034_SearchForARange {
-
     public int[] searchRange(int[] nums, int target) {
         int lo = 0;
         int hi = nums.length - 1;
