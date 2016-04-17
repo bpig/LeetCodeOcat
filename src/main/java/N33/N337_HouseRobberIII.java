@@ -2,9 +2,6 @@ package N33;
 
 import util.TreeNode;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * Created: shuai.li
  * Date: 2016/4/16.
@@ -30,28 +27,22 @@ import java.util.Map;
  * 1   3   1
  * Maximum amount of money the thief can rob = 4 + 5 = 9.
  */
-public class N337_HouseRobberIII {
-    Map[] content;
 
-    int recur(TreeNode node, int rob) {
-        if (node == null) {
-            return 0;
-        }
-        if (content[rob].containsKey(node)) {
-            return (int) content[rob].get(node);
-        }
-        int ans = recur(node.left, 1) + recur(node.right, 1);
-        if (rob == 1) {
-            ans = Math.max(ans, node.val + recur(node.left, 0) + recur(node.right, 0));
-        }
-        content[rob].put(node, ans);
-        return ans;
+public class N337_HouseRobberIII {
+    public int rob(TreeNode root) {
+        int[] maxVal = dpRob(root);
+        return Math.max(maxVal[0], maxVal[1]);
     }
 
-    public int rob(TreeNode root) {
-        content = new Map[2];
-        content[0] = new HashMap<TreeNode, Integer>();
-        content[1] = new HashMap<TreeNode, Integer>();
-        return recur(root, 1);
+    public int[] dpRob(TreeNode root) {
+        if (root == null) {
+            return new int[]{0, 0};
+        }
+        int[] maxVal = new int[2];
+        int[] leftMax = dpRob(root.left);
+        int[] rightMax = dpRob(root.right);
+        maxVal[0] = Math.max(leftMax[0], leftMax[1]) + Math.max(rightMax[0], rightMax[1]);
+        maxVal[1] = leftMax[0] + rightMax[0] + root.val;
+        return maxVal;
     }
 }
