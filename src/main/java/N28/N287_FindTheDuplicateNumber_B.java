@@ -27,7 +27,6 @@ public class N287_FindTheDuplicateNumber_B {
         while (true) {
             slow = nums[slow];
             fast = nums[nums[fast]];
-
             if (slow == fast) {
                 break;
             }
