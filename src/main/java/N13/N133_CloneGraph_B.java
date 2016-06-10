@@ -5,6 +5,11 @@ package N13;
  * Date: 2015-12-09
  */
 
+import util.UndirectedGraphNode;
+
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Clone an undirected graph. Each node in the graph contains a label and a list of its neighbors.
  * <p/>
@@ -30,4 +35,22 @@ package N13;
  * `      \_/
  */
 public class N133_CloneGraph_B {
+    public UndirectedGraphNode cloneGraph(UndirectedGraphNode node) {
+        if (node == null) return null;
+        HashMap<Integer, UndirectedGraphNode> map = new HashMap<>();
+        return handler(node, map);
+    }
+
+    private UndirectedGraphNode handler(UndirectedGraphNode node, HashMap<Integer, UndirectedGraphNode> map) {
+        UndirectedGraphNode res = new UndirectedGraphNode(node.label);
+        map.put(node.label, res);
+        for (UndirectedGraphNode n : node.neighbors) {
+            UndirectedGraphNode nb = map.get(n.label);
+            if (nb == null) {
+                nb = handler(n, map);
+            }
+            res.neighbors.add(nb);
+        }
+        return res;
+    }
 }

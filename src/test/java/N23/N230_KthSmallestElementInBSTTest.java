@@ -11,6 +11,7 @@ import static org.junit.Assert.assertEquals;
  */
 public class N230_KthSmallestElementInBSTTest {
     N230_KthSmallestElementInBST nb = new N230_KthSmallestElementInBST();
+
     @Test
     public void testKthSmallest() throws Exception {
         TreeNode tn;
