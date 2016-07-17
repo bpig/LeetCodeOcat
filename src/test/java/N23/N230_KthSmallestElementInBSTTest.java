@@ -19,5 +19,7 @@ public class N230_KthSmallestElementInBSTTest {
         assertEquals(3, nb.kthSmallest(tn, 1));
         assertEquals(5, nb.kthSmallest(tn, 2));
         assertEquals(7, nb.kthSmallest(tn, 3));
+
+        nb.post(tn);
     }
 }

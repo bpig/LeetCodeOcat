@@ -5,6 +5,7 @@ package N23;
  * Date: 2015-12-17
  */
 
+import apple.laf.JRSUIUtils;
 import util.TreeNode;
 
 import java.util.Stack;
@@ -31,11 +32,35 @@ public class N230_KthSmallestElementInBST {
                 root = root.left;
             }
             root = stk.pop();
+
             if (++ct == k) {
                 return root.val;
             }
             root = root.right;
         } while (true);
+    }
+
+    void post(TreeNode tn) {
+        Stack<TreeNode> stk = new Stack<>();
+        do {
+            if (tn != null) {
+                stk.push(tn);
+                if (tn.right != null) {
+                    stk.push(tn.right);
+                }
+                if (tn.left != null) {
+                    stk.push(tn.left);
+                }
+            }
+            while (true) {
+                tn = stk.pop();
+                if (tn.left == null && tn.right == null) {
+                    System.out.println(tn.val);
+                } else {
+                    break;
+                }
+            }
+        } while (!stk.isEmpty());
     }
 
     int val;

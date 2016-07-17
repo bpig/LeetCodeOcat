@@ -23,6 +23,22 @@ package N30;
  */
 public class N309_BestTimeToBuyAndSellStockWithCooldown_B {
     public int maxProfit(int[] prices) {
+        int profit = 0;
+        for (int i = 0; i < prices.length - 1; ++i) {
+            int value = prices[i + 1] - prices[i];
+            profit += value > 0 ? value : 0;
+        }
+        for (int i = 1; i < prices.length - 2; ++i) {
+            if (prices[i] > prices[i - 1] && prices[i] < prices[i + 1] && prices[i + 1] < prices[i + 2]) {
+                int value = prices[i + 2] - prices[i];
+                profit -= value > 0 ? value : 0;
+            }
+        }
+        return profit;
+    }
+
+
+    public int maxProfit2(int[] prices) {
         int profit1 = 0, profit2 = 0;
         for (int i = 1; i < prices.length; i++) {
             int copy = profit1;
